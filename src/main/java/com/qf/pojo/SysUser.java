@@ -1,7 +1,6 @@
 package com.qf.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -14,24 +13,25 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author lcs
- * @since 2020-08-19
+ * @since 2020-08-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SysCity extends Model<SysCity> {
+public class SysUser extends Model<SysUser> {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    @TableField("name")
-    private String name;
-    @TableField("pid")
-    private Integer pid;
 
-    private String cname;
+    private String tel;
 
-    private Integer ppid;
+    private String password;
+
+    private String email;
+
+    private String invitation;
+
 
     @Override
     protected Serializable pkVal() {

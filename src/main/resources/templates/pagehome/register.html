@@ -90,8 +90,8 @@
 
                 <div data-v-676ecf83="" class="registerImg right">
                     <h2 data-v-676ecf83="">已有车速递账号？
-                        <a data-v-676ecf83="" href="login.html">立即登录&nbsp;&gt;&gt;</a>
-                    </h2> <img data-v-676ecf83="" src="https://www.chesudi.com/static/img/register.256808f.jpg">
+                        <a data-v-676ecf83="" href="login">立即登录&nbsp;&gt;&gt;</a>
+                    </h2> <img data-v-676ecf83="" src="https://www.chesudi.com/activity/dynamic/weekMonthRent/images/zhouzu_pc.jpg">
                 </div>
             </div>
 
@@ -137,13 +137,13 @@
                 success:function(res) {
                     if(res.code == 1) {
                         alert("注册成功！");
-                        window.location.href=("login.html");
+                        window.location.href=("login");
                     } else {
                         layer.alert(res.info);
                     }
                 },
                 error: function() {
-                    elert("ajax错误");
+                    alert("ajax错误");
                 }
             });
             return false;

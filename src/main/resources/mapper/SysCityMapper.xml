@@ -7,8 +7,26 @@
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="pid" property="pid" />
+        <result column="cname" property="cname"></result>
+        <result column="ppid" property="ppid"></result>
     </resultMap>
 
+    <select id="listById" parameterType="string" resultMap="BaseResultMap">
+        select s.*,p.name cname,p.id ppid from sys_city s
+        inner join sys_city p
+        on s.id = p.pid
+        <trim prefix="where" prefixOverrides="and">
+            <if test="pid gt 0 and pid lt 3">
+                s.id = #{pid}
+            </if>
+            <if test="pid eq 0">
+                s.pid = #{pid}
+            </if>
+            <if test="pid gt 3">
+                p.id = #{pid}
+            </if>
+        </trim>
+    </select>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, name, pid

@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -16,4 +18,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SysCityMapper extends BaseMapper<SysCity> {
 
+    List<SysCity> listById(String pid);
 }

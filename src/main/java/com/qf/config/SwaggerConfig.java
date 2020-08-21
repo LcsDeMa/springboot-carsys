@@ -18,6 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2//开启Swagger2
 public class SwaggerConfig {
 
+
 //    //配置Swagger的Bean实例
 //    @Bean
 //    public Docket createDocket() {

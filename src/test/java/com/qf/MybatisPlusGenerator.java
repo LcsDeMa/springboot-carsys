@@ -41,7 +41,7 @@ public class MybatisPlusGenerator {
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         //手动指定映射表名
-        strategy.setInclude("sys_city");
+        strategy.setInclude("sys_order");
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);

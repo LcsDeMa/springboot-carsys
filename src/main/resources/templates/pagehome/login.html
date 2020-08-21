@@ -31,7 +31,7 @@
         <div data-v-0a99943a="" class="layout">
             <div data-v-0a99943a="" class="loginCom clear">
                 <div data-v-0a99943a="" class="loginImg left">
-                    <img data-v-0a99943a="" src="https://www.chesudi.com/static/img/login.674ee3d.jpg">
+                    <img data-v-0a99943a="" src="https://www.chesudi.com/static/img/services4.58586ae.jpg">
                 </div>
                 <div data-v-0a99943a="" class="loginType right">
                     <div class="denglu">
@@ -57,7 +57,7 @@
                                     <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
                             </div>
                             <div data-v-0a99943a="" class="goRegister">
-                                还没有账号？<a data-v-0a99943a="" href="register.html">免费注册</a></div>
+                                还没有账号？<a data-v-0a99943a="" href="register">免费注册</a></div>
                         </form>
                     </div>
                 </div>
@@ -113,8 +113,8 @@
                 <a data-v-3aaf9db2="" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010502003185" target="_blank">
                     <img data-v-3aaf9db2="" src="https://www.chesudi.com/static/img/gongan.d0289dc.png" class="img1"></a>
                 <img data-v-3aaf9db2="" src="https://www.chesudi.com/static/img/cnnic.4528ccc.png" class="img2">
-            </div>
-        </div>
+            </div>//https://www.chesudi.com/static/img/services4.58586ae.jpg
+        </div>//https://www.chesudi.com/static/img/login.674ee3d.jpg
     </div>
 
 
@@ -138,7 +138,7 @@
                 success:function(obj) {
                     console.log(obj.code);
                     if(obj.code == 1) {
-                        window.location.href="loginsuccess.html";
+                        window.location.href="success";
                     }else {
                         layer.alert(obj.info);
                     }
