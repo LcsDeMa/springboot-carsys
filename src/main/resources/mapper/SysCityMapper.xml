@@ -7,11 +7,19 @@
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="pid" property="pid" />
+    </resultMap>
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="CityMap" type="com.qf.pojo.SysCity">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="pid" property="pid" />
         <result column="cname" property="cname"></result>
         <result column="ppid" property="ppid"></result>
     </resultMap>
 
-    <select id="listById" parameterType="string" resultMap="BaseResultMap">
+    <select id="listById" parameterType="string" resultMap="CityMap">
         select s.*,p.name cname,p.id ppid from sys_city s
         inner join sys_city p
         on s.id = p.pid

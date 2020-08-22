@@ -2,6 +2,9 @@ package com.qf.service;
 
 import com.qf.pojo.SysOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.qf.pojo.SysOrder2;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SysOrderService extends IService<SysOrder> {
 
+    List<SysOrder2> findthree();
 }

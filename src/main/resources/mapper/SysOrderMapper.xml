@@ -12,7 +12,25 @@
         <result column="oprice" property="oprice" />
         <result column="status" property="status" />
     </resultMap>
-
+    <!-- 通用查询映射结果 -->
+    <resultMap id="OrderMap" type="com.qf.pojo.SysOrder2">
+        <id column="oid" property="oid" />
+        <result column="oprice" property="oprice" />
+        <result column="cname" property="cname" />
+        <result column="getcity" property="getcity" />
+        <result column="backcity" property="backcity" />
+        <result column="ostatus" property="ostatus" />
+    </resultMap>
+    <select id="findthree" resultMap="OrderMap">
+        SELECT o.id oid,o.oprice,c.name cname,d.name getcity,t.name backcity,o.status ostatus
+        FROM sys_order o
+        INNER JOIN sys_car c
+        ON o.cid = c.id
+        INNER JOIN sys_city d
+        ON o.getid = d.id
+        INNER JOIN sys_city t
+        ON o.backid= t.id
+    </select>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, cid, uid, getid, backid, oprice, status

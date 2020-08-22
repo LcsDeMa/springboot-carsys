@@ -108,10 +108,11 @@
             url:"/carsys/user/denglu.do",
             dataType:"json",
             success:function(data){
+                console.log(data);
                 //id为0时为父类
                 if(data.code==1){
-                    vm.tel = data.info.tel;
-                    vm.email=data.info.email;
+                    vm.tel = data.user.tel;
+                    vm.email=data.user.email;
                 }
             }
         });
@@ -157,7 +158,7 @@
                                 }
                             },
                             error: function() {
-                                elert("ajax错误");
+                                alert("ajax错误");
                             }
                         });
 

@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * <p>
  *  前端控制器
@@ -32,8 +37,10 @@ public class SysUserController {
 
     @RequestMapping("login.do")
     @ResponseBody
-    public ResultInfo login(SysUser sysUser){
-        System.out.println(sysUser);
+    public ResultInfo login(SysUser sysUser, HttpServletRequest request){
+//        System.out.println(sysUser);
+        HttpSession session = request.getSession();
+        Boolean isHasPeople = false;
         QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
         ResultInfo resultInfo = new ResultInfo();
         queryWrapper.setEntity(sysUser);
@@ -41,9 +48,12 @@ public class SysUserController {
         System.out.println(one);
         if (one != null){
             resultInfo.setCode(1);
+            isHasPeople = true;
         }else {
             resultInfo.setInfo("查无此人！");
         }
+        session.setAttribute("isHasPeople",isHasPeople);
+        session.setAttribute("user",one);
         return resultInfo;
 
     }
@@ -75,11 +85,37 @@ public class SysUserController {
     }
     @RequestMapping("denglu.do")
     @ResponseBody
-    public ResultInfo denglu(){
+    public ResultInfo denglu(HttpServletRequest request){
         ResultInfo resultInfo = new ResultInfo();
-
-
+        HttpSession session = request.getSession(false);
+        Boolean isHasPeople = false;
+        SysUser sysUser = null;
+        if (session != null) {
+            isHasPeople = (Boolean) session.getAttribute("isHasPeople");
+            sysUser = (SysUser)session.getAttribute("user");
+        }
+        if (isHasPeople){
+            resultInfo.setCode(1);
+            resultInfo.setUser(sysUser);
+        }else {
+            resultInfo.setCode(2);
+        }
         return  resultInfo;
     }
-
+    @RequestMapping("update.do")
+    @ResponseBody
+    public Map update(SysUser user,HttpServletRequest request){
+        System.out.println("update1----"+user);
+        HashMap<String, Object> map = new HashMap<>();
+        HttpSession session = request.getSession();
+        SysUser user1 = (SysUser) session.getAttribute("user");
+        System.out.println("update2--------"+user1);
+        user.setId(user1.getId());
+        boolean update = sysUserService.updateById(user);
+        session.setAttribute("user",sysUserService.getOne(new QueryWrapper<SysUser>().eq("id",user.getId())));
+        if (update){
+            map.put("code",1);
+        }
+        return map;
+    }
 }

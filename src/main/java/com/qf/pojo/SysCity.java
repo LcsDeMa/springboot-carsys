@@ -29,9 +29,9 @@ public class SysCity extends Model<SysCity> {
     @TableField("pid")
     private Integer pid;
 
-    private String cname;
-
-    private Integer ppid;
+//    private String cname;
+//
+//    private Integer ppid;
 
     @Override
     protected Serializable pkVal() {

@@ -19,6 +19,10 @@ public class ResultInfo {
 
     private Integer id;
 
+    private String tel;
+
+    private SysUser user;
+
     private String name;
 
     private Integer code;
